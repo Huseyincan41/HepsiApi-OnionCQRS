@@ -1,6 +1,6 @@
-﻿using YoutubeApi.Domain.Common;
+﻿using Hepsi.Domain.Common;
 
-namespace YoutubeApi.Domain.Entities
+namespace Hepsi.Domain.Entities
 {
     public class Detail : EntityBase
     {

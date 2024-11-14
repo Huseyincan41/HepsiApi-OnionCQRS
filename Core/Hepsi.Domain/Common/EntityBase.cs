@@ -1,4 +1,4 @@
-﻿namespace YoutubeApi.Domain.Common
+﻿namespace Hepsi.Domain.Common
 {
     public class EntityBase : IEntityBase
     {

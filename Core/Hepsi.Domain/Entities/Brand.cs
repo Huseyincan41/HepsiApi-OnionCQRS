@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using YoutubeApi.Domain.Common;
+using Hepsi.Domain.Common;
 
-namespace YoutubeApi.Domain.Entities
+namespace Hepsi.Domain.Entities
 {
     public class Brand : EntityBase
     {
