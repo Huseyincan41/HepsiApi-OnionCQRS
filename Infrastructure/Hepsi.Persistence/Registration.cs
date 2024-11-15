@@ -21,7 +21,7 @@ namespace Hepsi.Persistence
             opt.UseSqlServer(configuration.GetConnectionString("DefaultConnection")));
 
             services.AddScoped(typeof(IReadRepository<>), typeof(ReadRepository<>));
-            //services.AddScoped(typeof(IWriteRepository<>), typeof(WriteRepository<>));
+            services.AddScoped(typeof(IWriteRepository<>), typeof(WriteRepository<>));
 
             //services.AddScoped<IUnitOfWork, UnitOfWork>();
 
