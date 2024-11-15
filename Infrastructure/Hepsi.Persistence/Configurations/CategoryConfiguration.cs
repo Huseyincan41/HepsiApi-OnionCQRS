@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Hepsi.Domain.Entities;
 
-namespace YoutubeApi.Persistence.Configurations
+namespace Hepsi.Persistence.Configurations
 {
     public class CategoryConfiguration : IEntityTypeConfiguration<Category>
     {
