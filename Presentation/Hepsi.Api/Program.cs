@@ -1,5 +1,5 @@
 ﻿using Hepsi.Persistence;
-
+using Hepsi.Application;
 var builder = WebApplication.CreateBuilder(args);
 
 
@@ -15,6 +15,7 @@ builder.Configuration.SetBasePath(env.ContentRootPath)
 
 
 builder.Services.AddPersistence(builder.Configuration);
+builder.Services.AddApplication();
 var app=builder.Build();
 
 if (app.Environment.IsDevelopment())
