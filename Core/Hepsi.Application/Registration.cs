@@ -1,4 +1,6 @@
-﻿using Hepsi.Application.Exceptions;
+﻿using FluentValidation;
+using Hepsi.Application.Beheviors;
+using Hepsi.Application.Exceptions;
 using MediatR;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
@@ -22,7 +24,12 @@ namespace Hepsi.Application
 
             services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(assembly));
 
-            
+            services.AddValidatorsFromAssembly(assembly);
+            ValidatorOptions.Global.LanguageManager.Culture = new CultureInfo("tr");
+
+            services.AddTransient(typeof(IPipelineBehavior<,>), typeof(FluentValidationBehevior<,>));
+
+           
 
         }
     }
