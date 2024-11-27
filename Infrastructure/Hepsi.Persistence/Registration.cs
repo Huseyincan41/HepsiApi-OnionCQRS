@@ -1,5 +1,6 @@
 ﻿using Hepsi.Application.Interfaces.Repositories;
 using Hepsi.Application.Interfaces.UnitOfWorks;
+using Hepsi.Domain.Entities;
 using Hepsi.Persistence.Context;
 using Hepsi.Persistence.Repositories;
 using Hepsi.Persistence.UnitOfWorks;
@@ -27,17 +28,17 @@ namespace Hepsi.Persistence
 
             services.AddScoped<IUnitOfWork, UnitOfWork>();
 
-            //services.AddIdentityCore<User>(opt =>
-            //{
-            //    opt.Password.RequireNonAlphanumeric = false;
-            //    opt.Password.RequiredLength = 2;
-            //    opt.Password.RequireLowercase = false;
-            //    opt.Password.RequireUppercase = false;
-            //    opt.Password.RequireDigit = false;
-            //    opt.SignIn.RequireConfirmedEmail = false;
-            //})
-            //    .AddRoles<Role>()
-            //    .AddEntityFrameworkStores<AppDbContext>();
+            services.AddIdentityCore<User>(opt =>
+            {
+                opt.Password.RequireNonAlphanumeric = false;
+                opt.Password.RequiredLength = 2;
+                opt.Password.RequireLowercase = false;
+                opt.Password.RequireUppercase = false;
+                opt.Password.RequireDigit = false;
+                opt.SignIn.RequireConfirmedEmail = false;
+            })
+                .AddRoles<Role>()
+                .AddEntityFrameworkStores<AppDbContext>();
         }
     }
 }
