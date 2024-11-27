@@ -19,7 +19,7 @@ namespace Hepsi.Application.Features.Products.Command.CreateProduct
         }
         public async Task<Unit> Handle(CreateProductCommandRequest request, CancellationToken cancellationToken)
         {
-            //IList<Product> products = await unitOfWork.GetReadRepository<Product>().GetAllAsync();
+            IList<Product> products = await unitOfWork.GetReadRepository<Product>().GetAllAsync();
             Product product = new(request.Title, request.Description, request.BrandId, request.Price, request.Discount);
 
             await unitOfWork.GetWriteRepository<Product>().AddAsync(product);

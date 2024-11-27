@@ -1,6 +1,7 @@
 ﻿using FluentValidation;
 using Hepsi.Application.Beheviors;
 using Hepsi.Application.Exceptions;
+using Hepsi.Application.Features.Products.Rules;
 using MediatR;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
@@ -21,6 +22,7 @@ namespace Hepsi.Application
             var assembly = Assembly.GetExecutingAssembly();
 
             services.AddTransient<ExceptionMiddleware>();
+            services.AddTransient<ProductRules>();
 
             services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(assembly));
 
@@ -31,6 +33,17 @@ namespace Hepsi.Application
 
            
 
+        }
+        private static IServiceCollection AddRulesFromAssemblyContaining(
+            this IServiceCollection services,
+            Assembly assembly,
+            Type type)
+        {
+            var types = assembly.GetTypes().Where(t => t.IsSubclassOf(type) && type != t).ToList();
+            foreach (var item in types)
+                services.AddTransient(item);
+
+            return services;
         }
     }
 }
