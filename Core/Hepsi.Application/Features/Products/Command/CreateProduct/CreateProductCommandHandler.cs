@@ -1,7 +1,10 @@
-﻿using Hepsi.Application.Interfaces.AutoMapper;
+﻿using Hepsi.Application.Bases;
+using Hepsi.Application.Features.Products.Rules;
+using Hepsi.Application.Interfaces.AutoMapper;
 using Hepsi.Application.Interfaces.UnitOfWorks;
 using Hepsi.Domain.Entities;
 using MediatR;
+using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,12 +13,13 @@ using System.Threading.Tasks;
 
 namespace Hepsi.Application.Features.Products.Command.CreateProduct
 {
-    public class CreateProductCommandHandler : IRequestHandler<CreateProductCommandRequest,Unit>
+    public class CreateProductCommandHandler : BaseHandler ,IRequestHandler<CreateProductCommandRequest,Unit>
     {
         private readonly IUnitOfWork unitOfWork;
-        public CreateProductCommandHandler(IUnitOfWork unitOfWork)
+        private readonly ProductRules productRules;
+        public CreateProductCommandHandler(ProductRules productRules, IMapper mapper, IUnitOfWork unitOfWork, IHttpContextAccessor httpContextAccessor) : base(mapper, unitOfWork, httpContextAccessor)
         {
-            this.unitOfWork = unitOfWork;
+            this.productRules = productRules;
         }
         public async Task<Unit> Handle(CreateProductCommandRequest request, CancellationToken cancellationToken)
         {

@@ -1,6 +1,7 @@
 ﻿using FluentValidation;
 using Hepsi.Application.Beheviors;
 using Hepsi.Application.Exceptions;
+using Hepsi.Application.Features.Auth.Rules;
 using Hepsi.Application.Features.Products.Rules;
 using MediatR;
 using Microsoft.Extensions.DependencyInjection;
@@ -23,6 +24,7 @@ namespace Hepsi.Application
 
             services.AddTransient<ExceptionMiddleware>();
             services.AddTransient<ProductRules>();
+            services.AddTransient<AuthRules>();
 
             services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(assembly));
 
